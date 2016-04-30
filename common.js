@@ -47,8 +47,8 @@ Tabular.Table = function (options) {
 
   self.selector = options.selector;
 
-  if (!options.columns) {
-    throw new Error('Tabular.Table options must specify columns');
+  if (!options.columns && !options.columns_ref) {
+    throw new Error('Tabular.Table options must specify columns (Array of columns) or columns_ref (function to return Array of columns) ');
   }
 
   self.options = _.omit(options, 'collection', 'pub', 'sub', 'onUnload', 'allow', 'allowFields', 'extraFields', 'name', 'selector');

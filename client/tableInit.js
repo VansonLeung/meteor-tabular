@@ -121,3 +121,19 @@ tableRefreshColTitle = function tableRefreshColTitle(tabularTable, template) {
   template.tabular.columns = columns;
 };
 
+
+
+tableDetermineColumnsRef = function tableDetermineColumnsRef(tabularTable, template) {
+  if (tabularTable.options.columns == null 
+    && tabularTable.options.columns_ref != null 
+    && typeof tabularTable.options.columns_ref === "function") 
+  {
+    var columns_ref = tabularTable.options.columns_ref;
+    if (columns_ref) {
+      var columns = columns_ref(Meteor.userId);
+      if (columns) {
+        tabularTable.options.columns = columns;
+      }
+    }
+  }
+}

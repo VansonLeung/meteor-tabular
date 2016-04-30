@@ -119,6 +119,7 @@ var tabularOnRendered = function () {
       throw new Error("You must pass Tabular.Table instance as the table attribute");
     }
 
+    tableDetermineColumnsRef(tabularTable, template);
     tableRefreshColTitle(tabularTable, template);
 
 
