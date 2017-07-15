@@ -370,8 +370,10 @@ var tabularOnRendered = function () {
     // from the server, and eventually we'll have them all.
     // Without this check in here, there's a lot of flashing in the
     // table as rows are added.
-    if (cursor.count() < tableInfo.ids.length) {
-      return;
+    if (collection._collection.name.toLowerCase() !== 'users') {
+      if (cursor.count() < tableInfo.ids.length) {
+        return;
+      }
     }
 
     // Get data as array for DataTables to consume in the ajax function
